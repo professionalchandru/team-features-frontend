@@ -1,0 +1,80 @@
+import React from "react";
+import { TextField, Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import { Multiselect } from "multiselect-react-dropdown";
+
+const UserCreateForm = ({
+    name,
+    email,
+    password,
+    handleChange,
+    createUser,
+    addUser,
+    onSelect,
+    onRemove,
+    options,
+}) => {
+    let history = useHistory();
+    return (
+        <>
+            <TextField
+                label="Name"
+                id="name"
+                name="name"
+                value={name}
+                onChange={handleChange}
+            />
+            <br />
+            <TextField
+                label="Email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={handleChange}
+            />
+            <br />
+            <TextField
+                label="Pasword"
+                id="password"
+                name="password"
+                type="password"
+                value={password}
+                onChange={handleChange}
+            />
+            {/* <br />
+            <br />
+            <Multiselect
+                options={options} // Options to display in the dropdown
+                // selectedValues={selectedValue} // Preselected value to persist in dropdown
+                onSelect={onSelect} // Function will trigger on select event
+                onRemove={onRemove} // Function will trigger on remove event
+                displayValue="permission" // Property name to display in the dropdown options
+            /> */}
+            <br />
+            <br />
+            <Button
+                className="login-btn"
+                color="secondary"
+                variant="contained"
+                style={{
+                    backgroundColor: "brown",
+                    marginRight: "5px",
+                }}
+                onClick={() => history.goBack()}
+            >
+                Cancel
+            </Button>
+            <Button
+                className="login-btn"
+                color="primary"
+                variant="contained"
+                type="submit"
+                onClick={createUser}
+            >
+                {addUser ? "Add User" : "Create User"}
+            </Button>
+        </>
+    );
+};
+
+export default UserCreateForm;
